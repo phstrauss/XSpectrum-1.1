@@ -1,0 +1,48 @@
+Welcome to XSpectrum, a very simple but fast audio spectrum for Linux + X11.
+You will need Linux 2.0.1 or newer to run XSpectrum (prior to 2.0.1 was a bug
+in the sound driver which prevent the use of memory mapped input).
+You will also need a 16 bits sound-card. I use an old SB16 firmware 4.5.
+
+It works well, it's stable on my box, but its quiet limited about functionality.
+You can change sampling rate on the fly and freeze the current spectrum on the
+screen. You can't change the size of the display window, zoom in a particular
+area or the frequency range or output a frozen spectrum to printer. Those
+features will be added with time.
+
+Starting with release 1.1, I use the EZWGL widget library. You must have a
+working EZWGL if you want to recompile XSpectrum. You can find EZWGL at
+http://www.ma.utexas.edu/~mzou/EZWGL/
+
+xspectrum.c and fftbench.c are licensed under the term of GPL2 (file included),
+libdsp.c is registered with LGPL2 (also included).
+
+To build:
+
+You may edit the Makefile and change setting in the top part.
+
+make xspectrum
+
+make P5fftbench # if you want to measure timings of FFT algorithm on your
+                # CPU/compiler combination. Work only on intel P5, since it
+                # use the pentium cycle counter.
+
+
+About xspectrum:
+
+XSpectrum does 30 fps for 1024 pts R4 FFT (P5 90MHz) under X11 with a good
+VRAM graphic card, using double-buffering for flicker-free animation, 43 fps
+on a P5 166MHz
+
+
+About P5fftbench:
+
+I can do approx 1.8ms for a 1024 pts floating point (32bits) complex/complex
+R4 decimation in frequency FFT on a intel Pentium 90 MHz using pentium
+gcc 2.7.2, 1.1ms on a P5 166MHz
+
+
+Pentium GCC can be found on http://goof.com/pcg/index.html
+
+
+Enjoy,
+		Philippe Strauss, <philippe.strauss@urbanet.ch>
